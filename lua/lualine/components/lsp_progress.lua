@@ -74,6 +74,9 @@ LspProgress.register_progress = function(self)
 		local key = msg.token
 		local val = msg.value
 		local client_key = tostring(info.client_id)
+		if vim.lsp.get_client_by_id(info.client_id) == nil then
+			return
+		end
 
 		if key then
 			if self.clients[client_key] == nil then
